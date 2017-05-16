@@ -1,0 +1,18 @@
+Ian Frost
+CSCI-C290
+Assignment 2
+
+Questions:
+1. To find a winner of NIM, we must find who will be unable to balance the piles. By this, I mean that 
+	we change them to binary to make sure that they are all in the same format. Once this is done, we
+	do XOR on them to see what is unbalanced about all of the piles. If it is possible to balance the piles
+	from the current point, then the first player can keep reactively balancing after player 2 unbalances them.
+	If not, player 2 will be the one to balance them. 
+
+	For a game like NIM, there are a limited amount of moves. One must leave room to react to the opponent. The 
+	only way to guarantee this, is to make sure that the XOR is always 0 after your move. In this way,
+	whatever the other player does, the binary structures can be rebalanced if done correctly.
+
+2. For NIM poker if there is a current winning scenario after your move, all you would have to do is remove the 
+	amount of stones your opponent adds on in order to keep the board balanced. If you are not in a winning
+	position on your turn, then just like in NIM, you are screwed against a competent opponent.

@@ -1,0 +1,103 @@
+Ian Frost
+Homework 5
+
+Primer Questions:
+1. a. optimal values to reach the goal
+From:		Optimal:        Heuristic:
+start		14 				11
+A			9				5
+B			6				4
+C			9				6
+D			4				2
+E			5				3
+F			7				4
+
+They are admissible and consistent. Admissible because the heuristic never over
+estimates. Consistent because h(N) <= c(N, P) + h(P) where N is the node, 
+P is its successor, and c is the cost to get from N->P.
+
+
+b. optimal values to reach the goal
+From:		Optimal:		Heuristic:
+start		13				2
+A			8				6
+B			6				4
+C			9				6
+D			4				2
+E			4				2
+F			3				3
+
+This is admissible and consistent as well. Admissible because the heuristic never
+overestimates. Consistent because h(N) <= c(N, P) + h(P) where N is the node, 
+P is its successor, and c is the cost to get from N->P.
+
+Both are seemingly admissible and consistent because costs + successors are always nondecreasing
+in both cases.
+
+2. With djikstra's algorithm, we always find the optimal path, whereas A* depends on the 
+heuristic. If the heuristic isn't admissible, then we can't necessarily get the optimal
+solution. A* will run faster in certain cases and is usually better for larger space problems.
+Djikstra is a more specialized version of A*, in a manner of speaking, so it is more complete,
+but it does have issues with size.
+
+Comprehension Questions:
+1.
+MOVE 1: (1, 2, 0)
+MOVE 2: (5, 2, 3)
+MOVE 3: (10, 2, 4)
+MOVE 4: (1, 0, 1)
+MOVE 5: (3, 0, 2)
+MOVE 6: (4, 0, 3)
+MOVE 7: (3, 2, 3)
+MOVE 8: (6, 0, 2)
+MOVE 9: (1, 1, 2)
+MOVE 10: (2, 1, 3)
+MOVE 11: (7, 0, 1)
+MOVE 12: (9, 0, 4)
+MOVE 13: (7, 1, 0)
+MOVE 14: (8, 1, 4)
+MOVE 15: (7, 0, 4)
+MOVE 16: (1, 2, 0)
+MOVE 17: (6, 2, 4)
+MOVE 18: (2, 3, 1)
+MOVE 19: (1, 0, 1)
+MOVE 20: (3, 3, 0)
+MOVE 21: (4, 3, 2)
+MOVE 22: (5, 3, 4)
+MOVE 23: (4, 2, 4)
+MOVE 24: (3, 0, 4)
+MOVE 25: (1, 1, 0)
+MOVE 26: (2, 1, 4)
+MOVE 27: (1, 0, 4)
+
+
+2. My heuristic is adding the amount of disks that are not on the goal rod to 2 times the 
+amount of disks on the goal rod that are smaller than at least 1 disk not on the goal rod.
+h(n) = numDisks not on G + 2(numDisks on G < Di) where Di is not on G. This is admissible
+because it accounts for having to put each disk not on the goal, onto the goal, as well as,
+the actions to remove smaller disks (in order to allow for bigger disks to be placed) and 
+putting them back on, at some point. I think it is consistent as we never change more than the
+cost of 1 by changing from 1 node to the next. By removing from the goal node we subtract 2, but
+add 1 as there is another disk not on the goal node. If we add to the goal rod, we either add
+2 or 0 if we are adding a smaller disk or the largest one possible, respectively, and subtract 1
+because 1 disk is no longer on another rod outside of the goal node. This results in either +-1 
+difference in the heuristic. As such, h(N) <= 1 + h(N') for all nodes, I believe. I'll be honest,
+I am not completely sure I know what consistent actually means as is probably relevant in the 
+primer questions.
+
+3. I used different loop for each calcuation, so each randomShuffle was different amongst
+DFS, BFS, and A*, but these are the numbers I got.
+Average Time DFS = 0.5375810527801513 seconds
+Average Length DFS = 103.488 lines
+Average Time BFS = 0.9860812633037567 seconds
+Average Length BFS = 5.121 lines
+Average Time A* = 0.02452759075164795 seconds
+Average Length A* = 5.522 lines
+
+Since DFS searches immediate children first, it is more likely to find a faster solution than
+BFS, but it will be more lines, on average because it has to go really far down the tree, most of the
+time in order to find a correct answer. BFS takes longer to calculate, but has less lines as it finds
+solutions with the least amount of steps taken to get there. A* is faster and takes very few lines 
+to get to the solution because it is guided by heuristics. Therefore, since the heuristic is admissible,
+the algorithm will find optimal solutions because it expands the least costly nodes first.
+

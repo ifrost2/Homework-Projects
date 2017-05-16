@@ -1,0 +1,17 @@
+Ian Frost
+Homework 3
+
+1. Alpha-beta pruning, first off, looks at future moves of games and assigns them
+values when they are terminal states or at the depth limit. Once this is done,
+algorithms look at what is best depending on who is playing and if, at any point in
+its search, the opposing player would not be able to pass a possibility of a worse
+game state to its opponent then it stops searching any children at the current node.
+Dynamic programming allows us to avoid recalculating data we already have.
+By creating dictionaries that hold gamestates, we can view the best outcomes without
+having to do work every time. We just have to search the dictionary.
+
+2. My heuristic was just looking at checking how many pieces are in a row vertically or
+horizontally and assigning weights based on the more that are in a row. I tested this
+against checking based on how many pieces were in the middle and found this to be more
+accurate. While it does not check for all the ways to win, it does look at the game from
+a more novice person's perspective.

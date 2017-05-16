@@ -1,0 +1,7 @@
+Ian Frost
+Homework 4
+
+1. I went with giving higher/lower scores based on how many matching colors were in the same row and column.
+I looked at each element and checked each element in the same row, then the same column and added up based on that.
+This seemed like a better idea than using how many moves each player had essentially. Also, it makes sense because
+the more matching colors, the more likely there is to be a palindrome.
